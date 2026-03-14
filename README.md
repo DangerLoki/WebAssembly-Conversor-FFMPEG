@@ -96,4 +96,4 @@ http://localhost:8080
 
 ## Objetivo no portfólio
 
-Este projeto faz parte do meu portfólio para demonstrar capacidade de construir soluções web que integrem interface, processamento local de arquivos e tecnologias voltadas a performance no navegador.
+Este projeto faz parte do meu portfólio para demonstrar capacidade de construir soluções web com processamento local de arquivos, integração de tecnologias avançadas no navegador e entendimento prático de trade-offs técnicos entre usabilidade, privacidade e desempenho.
