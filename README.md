@@ -1,5 +1,3 @@
-Perfeito — aqui vai um **README.md** já no padrão “portfólio”, bem claro e com cara profissional. (Você só cola no arquivo `README.md` na raiz do repo.)
-
 ````md
 # ConverterFFMPEG
 
