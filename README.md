@@ -1,87 +1,95 @@
-````md
 # ConverterFFMPEG
 
-Uma ferramenta web simples para **converter imagens no navegador** usando **FFmpeg (WebAssembly)** — sem depender de API externa.
+Aplicação web para conversão de imagens diretamente no navegador usando **FFmpeg via WebAssembly**, sem envio de arquivos para uma API externa.
 
-> ✅ Conversão client-side (privacidade: o arquivo não precisa sair da sua máquina)  
-> ✅ Interface básica com upload/drag-and-drop e preview  
-> ✅ Gera arquivo convertido para download
+## Visão geral
 
----
+Este projeto foi desenvolvido para demonstrar uma abordagem **client-side** de processamento de arquivos, com foco em privacidade, simplicidade de uso e integração de tecnologia avançada no navegador.
 
-## O que este projeto faz
+A aplicação permite selecionar uma imagem, visualizar um preview e realizar a conversão localmente, gerando o arquivo final para download.
 
-- Permite enviar uma imagem (upload ou arrastar/soltar)
-- Mostra um preview do arquivo selecionado
-- Converte a imagem para um formato de saída (ex.: JPG) usando FFmpeg rodando no browser
-- Faz o download do arquivo convertido
+## Status
 
-> **Obs.:** apesar do nome “ConverterFFMPEG”, a versão atual está focada em **conversão de imagem**. (Vídeo ainda é um passo futuro.)
+**Projeto em desenvolvimento**
 
----
+A versão atual está focada em **conversão de imagens**. Expansões futuras podem incluir novos formatos, controles de qualidade e suporte a conversão de vídeo.
+
+## Funcionalidades atuais
+
+- Upload de imagem
+- Suporte a drag-and-drop
+- Preview do arquivo selecionado
+- Conversão local no navegador
+- Download do arquivo convertido
 
 ## Stack
 
-- **Node.js + Express** (servidor simples para servir os arquivos)
-- **HTML/CSS/JavaScript** (front-end)
-- **@ffmpeg/ffmpeg** (FFmpeg via WebAssembly no navegador)
+- JavaScript
+- HTML
+- CSS
+- Node.js
+- Express
+- `@ffmpeg/ffmpeg`
 
----
+## Decisões técnicas
 
-## Como rodar localmente
+### Por que WebAssembly
+WebAssembly foi utilizado para executar processamento de mídia diretamente no navegador com desempenho superior ao de abordagens puramente interpretadas em JavaScript. Isso permite trazer uma ferramenta tradicionalmente nativa para o ambiente web de forma prática.
 
-### Pré-requisitos
-- **Node.js** instalado (versão LTS recomendada)
+### Por que FFmpeg no navegador
+FFmpeg foi escolhido por ser uma solução consolidada para processamento e conversão de mídia. Executá-lo no browser permite aproveitar sua robustez sem depender de backend dedicado para conversão.
 
-### Instalação
-```bash
-npm install
-````
+### Por que processamento client-side
+A conversão local evita o envio do arquivo para servidores externos, o que traz vantagens em:
 
-### Executar
-
-```bash
-node server.js
-```
-
-Acesse no navegador:
-
-* `http://localhost:8080`
-
----
-
-## Como usar
-
-1. Abra a página no navegador
-2. Arraste uma imagem para a área de drop **ou** selecione via botão de upload
-3. Clique para converter (quando disponível no fluxo da página)
-4. Baixe o arquivo convertido
-
----
-
-## Estrutura do projeto
-
-* `server.js` — servidor Express (static hosting)
-* `public/` — arquivos do front-end
-
-  * `public/index.html` — página principal
-  * `public/style.css` — estilos
-  * `public/js/` — scripts (upload, preview, conversão)
-* `build/` — artefatos/bundle (se aplicável)
-
----
-
-## Pontos a melhorar (roadmap)
-
-* [ ] Ajustar input para respeitar a extensão real do arquivo (PNG/JPG/WebP etc.)
-* [ ] Melhorar UX: loader/progresso durante `ffmpeg.load()` e `ffmpeg.run()`
-* [ ] Permitir escolher formato de saída (JPG/PNG/WebP)
-* [ ] Permitir configurar qualidade/resolução
-* [ ] (Futuro) Conversão de vídeo/áudio e presets
-
----
+- privacidade dos dados
+- redução de dependência de API
+- menor custo de infraestrutura
+- arquitetura mais simples para testes e demonstração
 
 ## Limitações conhecidas
 
-* A primeira execução pode ser mais lenta por causa do carregamento do FFmpeg (WASM)
-* Conversões pesadas podem variar conforme o hardware do usuário (CPU/RAM)
+- O carregamento inicial pode ser mais lento devido à inicialização do FFmpeg em WebAssembly
+- Conversões mais pesadas dependem diretamente do hardware do usuário
+- O navegador impõe limites práticos de memória e processamento
+- A versão atual está focada em imagem, não em fluxos mais pesados de vídeo
+
+## Habilidades demonstradas
+
+- Integração de biblioteca complexa no front-end
+- Processamento de arquivos no navegador
+- Manipulação de upload e preview de arquivos
+- Processamento client-side
+- Estruturação de interface para fluxo de conversão
+- Experiência do usuário com drag-and-drop
+- Organização de projeto web com separação entre servidor e front-end
+- Aplicação prática de WebAssembly
+- Uso de ferramenta de mídia em ambiente web
+
+## Estrutura do projeto
+
+```bash
+WebAssembly-Conversor-FFMPEG/
+├── public/
+├── build/
+├── server.js
+├── package.json
+└── README.md
+````
+
+## Como executar
+
+```bash
+npm install
+node server.js
+```
+
+A aplicação ficará disponível localmente em:
+
+```bash
+http://localhost:8080
+```
+
+## Objetivo no portfólio
+
+Este projeto faz parte do meu portfólio para demonstrar capacidade de construir soluções web que integrem interface, processamento local de arquivos e tecnologias voltadas a performance no navegador.
